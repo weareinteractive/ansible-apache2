@@ -87,7 +87,6 @@ apache2_service_state: started
       - { id: mime, state: present }
       - { id: headers, state: present }
       - { id: rewrite, state: present }
-    apache2_wwww_dir_owner: staff
     apache2_wwww_dir_group: staff
     apache2_wwww_dir_mode: 4775
 ```
