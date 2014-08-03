@@ -1,0 +1,23 @@
+---
+
+- name: Enabling sites
+  command: >
+    a2ensite {{ item.id }}
+    creates=/etc/apache2/sites-enabled/{{ item.id }}.conf
+  when: item.state is not defined or item.state != 'absent'
+  with_items: apache2_sites
+  notify: reload apache2
+  tags:
+    - web
+    - apache2
+
+- name: Disabling sites
+  command: >
+    a2dissite {{ item.id }}
+    removes=/etc/apache2/sites-enabled/{{ item.id }}.conf
+  when: item.state is defined and item.state == 'absent'
+  with_items: apache2_sites
+  notify: reload apache2
+  tags:
+    - web
+    - apache2

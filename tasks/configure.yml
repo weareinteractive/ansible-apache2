@@ -1,0 +1,47 @@
+---
+
+- name: Configuring httpd
+  template: >
+    src=etc-apache2-httpd.conf.j2
+    dest=/etc/apache2/httpd.conf
+    owner=root
+    group=root
+    mode=0644
+  notify: reload apache2
+  tags:
+    - web
+    - apache2
+
+- name: Configuring ports
+  template: >
+    src=etc-apache2-ports.conf.j2
+    dest=/etc/apache2/ports.conf
+    owner=root
+    group=root
+    mode=0644
+  notify: reload apache2
+  tags:
+    - web
+    - apache2
+
+- name: Configuring security
+  template: >
+    src=etc-apache2-conf-d-security.j2
+    dest=/etc/apache2/conf-available/security.conf
+    owner=root
+    group=root
+    mode=0644
+  tags:
+    - web
+    - apache2
+
+- name: Setting file permissions
+  file: >
+    path=/var/www
+    state=directory
+    owner={{ apache2_wwww_dir_owner }}
+    group={{ apache2_wwww_dir_group }}
+    mode={{ apache2_wwww_dir_mode }}
+  tags:
+    - web
+    - apache2

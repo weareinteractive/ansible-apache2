@@ -1,0 +1,37 @@
+---
+# For more information about default variables see:
+# http://www.ansibleworks.com/docs/playbooks_variables.html#id26
+#
+# apache2_module:
+#   - { id: auth, state: absent }
+#   - { id: rewrite, state: present }
+# apache2_confs:
+#   - { id: security, state: absent }
+#   - { id: mime, state: present }
+# apache2_sites:
+#   - { id: default, state: absent }
+#   - { id: foobar, state: present }
+#
+
+# ports to listen to
+apache2_ports: [80]
+# ssl ports to listen to
+apache2_ssl_ports: [443]
+# enabled/disabled modules
+apache2_modules: []
+# enabled/disabled confs
+apache2_confs: []
+# enabled/disabled sites
+apache2_sites: []
+# www dir owner name
+apache2_wwww_dir_owner: root
+# www dir group name
+apache2_wwww_dir_group: root
+# www dir mode
+apache2_wwww_dir_mode: 0775
+# remove the default host
+apache2_remove_default: yes
+# start on boot
+apache2_service_enabled: yes
+# current state: started, stopped
+apache2_service_state: started
