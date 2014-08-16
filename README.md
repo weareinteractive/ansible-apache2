@@ -1,13 +1,12 @@
 # Ansible Apache2 Role
 
-[![Build Status](https://travis-ci.org/weareinteractive/ansible-role-apache2.png?branch=master)](https://travis-ci.org/weareinteractive/ansible-role-apache2)
-[![Stories in Ready](https://badge.waffle.io/weareinteractive/ansible-role-apache2.svg?label=ready&title=Ready)](http://waffle.io/weareinteractive/ansible-role-apache2)
+[![Build Status](https://travis-ci.org/weareinteractive/ansible-apache2.png?branch=master)](https://travis-ci.org/weareinteractive/ansible-apache2)
+[![Stories in Ready](https://badge.waffle.io/weareinteractive/ansible-apache2.svg?label=ready&title=Ready)](http://waffle.io/weareinteractive/ansible-apache2)
 
 > `apache2` is an [ansible](http://www.ansible.com) role which: 
 > 
 > * installs apache2
 > * configures apache2
-> * configures `/var/www`
 > * enables/disables confs
 > * enables/disables sites
 > * enables/disables modules
@@ -30,7 +29,7 @@ $ arm install franklinkim.apache2
 Using `git`:
 
 ```
-$ git clone https://github.com/weareinteractive/ansible-role-apache2.git
+$ git clone https://github.com/weareinteractive/ansible-apache2.git
 ```
 
 ## Variables
@@ -57,12 +56,6 @@ apache2_modules: []
 apache2_confs: []
 # enabled/disabled sites
 apache2_sites: []
-# www dir owner name
-apache2_wwww_dir_owner: root
-# www dir group name
-apache2_wwww_dir_group: root
-# www dir mode
-apache2_wwww_dir_mode: 0775
 # remove the default host
 apache2_remove_default: yes
 # start on boot
@@ -70,6 +63,11 @@ apache2_service_enabled: yes
 # current state: started, stopped
 apache2_service_state: started
 ```
+
+## Handlers
+
+* `reload apache2` 
+* `restart apache2` 
 
 ## Example playbook
 
@@ -87,15 +85,13 @@ apache2_service_state: started
       - { id: mime, state: present }
       - { id: headers, state: present }
       - { id: rewrite, state: present }
-    apache2_wwww_dir_group: staff
-    apache2_wwww_dir_mode: 4775
 ```
 
 ## Testing
 
 ```
-$ git clone https://github.com/weareinteractive/ansible-role-apache2.git
-$ cd ansible-role-apache2
+$ git clone https://github.com/weareinteractive/ansible-apache2.git
+$ cd ansible-apache2
 $ vagrant up
 ```
 

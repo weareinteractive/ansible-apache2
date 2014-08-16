@@ -23,12 +23,6 @@ apache2_modules: []
 apache2_confs: []
 # enabled/disabled sites
 apache2_sites: []
-# www dir owner name
-apache2_wwww_dir_owner: root
-# www dir group name
-apache2_wwww_dir_group: root
-# www dir mode
-apache2_wwww_dir_mode: 0775
 # remove the default host
 apache2_remove_default: yes
 # start on boot

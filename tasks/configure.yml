@@ -35,13 +35,3 @@
     - web
     - apache2
 
-- name: Setting file permissions
-  file: >
-    path=/var/www
-    state=directory
-    owner={{ apache2_wwww_dir_owner }}
-    group={{ apache2_wwww_dir_group }}
-    mode={{ apache2_wwww_dir_mode }}
-  tags:
-    - web
-    - apache2

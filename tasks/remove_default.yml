@@ -1,18 +1,11 @@
 ---
 
-- name: Removing default files
-  file: >
-    dest=/var/www/html
-    state=absent
-  tags:
-    - web
-    - apache2
-
 - name: Disabling default host
   file: >
     dest=/etc/apache2/sites-enabled/000-default.conf
     state=absent
   notify: reload apache2
+  when: apache2_remove_default
   tags:
     - web
     - apache2
@@ -21,6 +14,7 @@
   file: >
     dest=/etc/apache2/sites-available/000-default.conf
     state=absent
+  when: apache2_remove_default
   tags:
     - web
     - apache2
@@ -29,6 +23,7 @@
   file: >
     dest=/etc/apache2/sites-available/default-ssl.conf
     state=absent
+  when: apache2_remove_default
   tags:
     - web
     - apache2

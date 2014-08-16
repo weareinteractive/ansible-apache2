@@ -4,7 +4,6 @@
 - include: configure.yml
 - include: rules.yml
 - include: remove_default.yml
-  when: apache2_remove_default
 - include: manage_confs.yml
 - include: manage_sites.yml
 - include: manage_modules.yml

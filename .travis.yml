@@ -10,6 +10,6 @@ install:
   - ansible-galaxy install franklinkim.openssl
 script:
   - echo localhost > inventory
-  - ln -s ansible-role-apache2 ../franklinkim.apache2
+  - ln -s ansible-apache2 ../franklinkim.apache2
   - ansible-playbook --syntax-check -i inventory test.yml
   - ansible-playbook -i inventory test.yml --connection=local --sudo -vvvv
