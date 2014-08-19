@@ -4,14 +4,7 @@
   roles:
     - franklinkim.apache2
   vars:
-    apache2_confs:
-      - { id: charset, state: absent }
-      - { id: serve-cgi-bin, state: absent }
-      - { id: localized-error-pages, state: absent }
-      - { id: security, state: present }
     apache2_modules:
       - { id: mime, state: present }
       - { id: headers, state: present }
       - { id: rewrite, state: present }
-    apache2_wwww_dir_group: staff
-    apache2_wwww_dir_mode: 4775

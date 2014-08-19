@@ -17,6 +17,8 @@
 apache2_ports: [80]
 # ssl ports to listen to
 apache2_ssl_ports: [443]
+# addresses to listen to (2.2  only)
+apache2_listen_addresses: ['*']
 # enabled/disabled modules
 apache2_modules: []
 # enabled/disabled confs
@@ -24,8 +26,14 @@ apache2_confs: []
 # enabled/disabled sites
 apache2_sites: []
 # remove the default host
-apache2_remove_default: yes
+apache2_remove_default: no
 # start on boot
 apache2_service_enabled: yes
 # current state: started, stopped
 apache2_service_state: started
+# set to one of:  Full | OS | Minimal | Minor | Major | Prod
+apache2_server_tokens: Prod
+# set to one of:  On | Off | EMail
+apache2_server_signiture: 'Off'
+# set to one of:  On | Off | extended
+apache2_trace_enable: 'Off'

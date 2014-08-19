@@ -8,7 +8,8 @@ galaxy_info:
   platforms:
     - name: Ubuntu
       versions:
-        - Kylin
+        - Precise
+        - Trusty
   categories:
     - web
 # List your role dependencies here, one per line. Only
