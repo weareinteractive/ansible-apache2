@@ -7,7 +7,7 @@
 #   - { id: rewrite, state: present }
 # apache2_confs:
 #   - { id: security, state: absent }
-#   - { id: mime, state: present }
+#   - { name: mime, state: present }
 # apache2_sites:
 #   - { id: default, state: absent }
 #   - { id: foobar, state: present }
