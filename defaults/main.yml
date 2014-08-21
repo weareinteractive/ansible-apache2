@@ -9,8 +9,25 @@
 #   - { id: security, state: absent }
 #   - { name: mime, state: present }
 # apache2_sites:
-#   - { id: default, state: absent }
-#   - { id: foobar, state: present }
+#   - id: mysite (required)
+#     name: mysite.local (required)
+#     ip: '*'
+#     port: 80
+#     state: present
+#     add_webroot: no
+#     template: path/to/template.j2
+#     rules: []
+#     aliases: []
+#     redirects: []
+#     ssl:
+#       port: 443
+#       key_name: mykey
+#       cert_name: mycert
+#       chain_name: mychain
+#     auth:
+#       name: mysite
+#       file: mysite
+#     append: ''
 #
 
 # ports to listen to
