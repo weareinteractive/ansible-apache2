@@ -96,6 +96,8 @@ port: 80
 state: present
 # create the /var/www/[id]/htdocs folder
 add_webroot: no
+# path to your own site template
+template: path/to/template.j2
 # /etc/nginx/rules/[rule].conf to include
 rules: []
 # list of server aliases
