@@ -166,7 +166,7 @@ These can be included into your site definitions.
           - { name: foobar, password: foobar }
     openssl_self_signed:
       - { name: 'foobar.local', country: 'DE', state: 'Bavaria', city: 'Munich', organization: 'Foo Bar', email: 'foo@bar.com' }
-    apache2_sites_html:
+    apache2_sites:
       - id: foobar
         state: present
         name: foobar.local
