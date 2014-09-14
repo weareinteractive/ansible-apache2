@@ -98,7 +98,7 @@ state: present
 add_webroot: no
 # path to your own site template
 template: path/to/template.j2
-# /etc/nginx/rules/[rule].conf to include
+# /etc/apache2/rules/[rule].conf to include
 rules: []
 # list of server aliases
 aliases: []
@@ -131,7 +131,7 @@ These are the handlers that are defined in `handlers/main.yml`.
 
 ## Rules
 
-In addition there will be copied some configuration rules to `/etc/nginx/rules`:
+In addition some configuration rules will be copied unconditionally to `/etc/apache2/rules`:
 
 * compression.conf
 * cors_ajax.conf
