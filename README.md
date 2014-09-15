@@ -106,8 +106,6 @@ aliases: []
 redirects: []
 # enable ssl
 ssl:
-  # redirect http to https
-  only: no
   # port to listen to
   port: 443
   # @see franklinkim.openssl
@@ -131,7 +129,7 @@ These are the handlers that are defined in `handlers/main.yml`.
 
 ## Rules
 
-In addition some configuration rules will be copied unconditionally to `/etc/apache2/rules`:
+Some configuration fragments will be copied unconditionally to `/etc/apache2/rules`:
 
 * compression.conf
 * cors_ajax.conf
@@ -146,7 +144,7 @@ In addition some configuration rules will be copied unconditionally to `/etc/apa
 * ssl.conf
 * utf8.conf
 
-These can be included into your site definitions.
+These can be included into your site definitions (See Example playbook below).
 
 ## Example playbook
 
