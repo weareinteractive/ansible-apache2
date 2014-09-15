@@ -106,8 +106,6 @@ aliases: []
 redirects: []
 # enable ssl
 ssl:
-  # redirect http to https
-  only: no
   # port to listen to
   port: 443
   # @see franklinkim.openssl
