@@ -1,10 +1,12 @@
 # Ansible Apache2 Role
 
-[![Build Status](https://travis-ci.org/weareinteractive/ansible-apache2.png?branch=master)](https://travis-ci.org/weareinteractive/ansible-apache2)
-[![Stories in Ready](https://badge.waffle.io/weareinteractive/ansible-apache2.svg?label=ready&title=Ready)](http://waffle.io/weareinteractive/ansible-apache2)
+[![Build Status](https://img.shields.io/travis/weareinteractive/ansible-apache2.svg)](https://travis-ci.org/weareinteractive/ansible-apache2)
+[![License](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://raw.githubusercontent.com/weareinteractive/ansible-apache2/master/LICENSE)
+[![GitHub Tags](https://img.shields.io/github/tag/weareinteractive/ansible-apache2.svg)](https://github.com/weareinteractive/ansible-apache2)
+[![GitHub Stars](https://img.shields.io/github/stars/weareinteractive/ansible-apache2.svg)](https://github.com/weareinteractive/ansible-apache2)
 
-> `apache2` is an [ansible](http://www.ansible.com) role which: 
-> 
+> `apache2` is an [ansible](http://www.ansible.com) role which:
+>
 > * installs apache2
 > * configures apache2
 > * enables/disables confs
@@ -23,16 +25,16 @@ Using `ansible-galaxy`:
 $ ansible-galaxy install franklinkim.apache2
 ```
 
-Using `arm` ([Ansible Role Manager](https://github.com/mirskytech/ansible-role-manager/)):
+Using `requirements.yml`:
 
 ```
-$ arm install franklinkim.apache2
+- src: franklinkim.apache2
 ```
 
 Using `git`:
 
 ```
-$ git clone https://github.com/weareinteractive/ansible-apache2.git
+$ git clone https://github.com/weareinteractive/ansible-apache2.git franklinkim.apache2
 ```
 
 ## Dependencies
@@ -124,8 +126,8 @@ append: false
 
 These are the handlers that are defined in `handlers/main.yml`.
 
-* `reload apache2` 
-* `restart apache2` 
+* `reload apache2`
+* `restart apache2`
 
 ## Rules
 
@@ -150,7 +152,8 @@ These can be included into your site definitions (See Example playbook below).
 
 ```
 - host: all
-  roles: 
+  sudo: yes
+  roles:
     - franklinkim.apache2
   vars:
     apache2_modules:
