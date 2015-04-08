@@ -79,6 +79,10 @@ apache2_server_tokens: Prod
 apache2_server_signiture: 'Off'
 # set to one of:  On | Off | extended
 apache2_trace_enable: 'Off'
+# path to certificates
+apache2_certs_path: /etc/ssl/certs
+# path to keys
+apache2_keys_path: /etc/ssl/private
 ```
 
 Module and confs might be defined through:
@@ -161,6 +165,8 @@ These can be included into your site definitions (See Example playbook below).
 - host: all
   sudo: yes
   roles:
+    - franklinkim.openssl
+    - franklinkim.htpasswd
     - franklinkim.apache2
   vars:
     apache2_modules:
