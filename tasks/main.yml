@@ -2,21 +2,71 @@
 
 - name: Including variables
   include_vars: "{{ ansible_distribution_release }}.yml"
+  tags:
+    - web
+    - apache2
+    - apache2-vars
 
 - include: install.yml
+  tags:
+    - web
+    - apache2
+    - apache2-install
+
 - include: rules.yml
+  tags:
+    - web
+    - apache2
+    - apache2-rules
 
 - include: config-2.2.yml
   when: apache2_version == 2.2
-- include: remove_default-2.2.yml
-  when: apache2_version == 2.2
+  tags:
+    - web
+    - apache2
+    - apache2-config
 
 - include: config-2.4.yml
   when: apache2_version == 2.4
+  tags:
+    - web
+    - apache2
+    - apache2-config
+
+- include: remove_default-2.2.yml
+  when: apache2_version == 2.2
+  tags:
+    - web
+    - apache2
+    - apache2-remove-default
+
 - include: remove_default-2.4.yml
   when: apache2_version == 2.4
+  tags:
+    - web
+    - apache2
+    - apache2-remove-default
 
 - include: manage_modules.yml
+  tags:
+    - web
+    - apache2
+    - apache2-manage-modules
+
 - include: manage_confs.yml
+  tags:
+    - web
+    - apache2
+    - apache2-manage-confs
+
 - include: manage_sites.yml
+  tags:
+    - web
+    - apache2
+    - apache2-manage-sites
+
 - include: service.yml
+  tags:
+    - web
+    - apache2
+    - apache2-service

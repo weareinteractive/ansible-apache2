@@ -1,10 +1,12 @@
 # Ansible Apache2 Role
 
-[![Build Status](https://travis-ci.org/weareinteractive/ansible-apache2.png?branch=master)](https://travis-ci.org/weareinteractive/ansible-apache2)
-[![Stories in Ready](https://badge.waffle.io/weareinteractive/ansible-apache2.svg?label=ready&title=Ready)](http://waffle.io/weareinteractive/ansible-apache2)
+[![Build Status](https://img.shields.io/travis/weareinteractive/ansible-apache2.svg)](https://travis-ci.org/weareinteractive/ansible-apache2)
+[![Galaxy](http://img.shields.io/badge/galaxy-franklinkim.supervisor-blue.svg)](https://galaxy.ansible.com/list#/roles/1364)
+[![GitHub Tags](https://img.shields.io/github/tag/weareinteractive/ansible-apache2.svg)](https://github.com/weareinteractive/ansible-apache2)
+[![GitHub Stars](https://img.shields.io/github/stars/weareinteractive/ansible-apache2.svg)](https://github.com/weareinteractive/ansible-apache2)
 
-> `apache2` is an [ansible](http://www.ansible.com) role which: 
-> 
+> `apache2` is an [ansible](http://www.ansible.com) role which:
+>
 > * installs apache2
 > * configures apache2
 > * enables/disables confs
@@ -23,21 +25,24 @@ Using `ansible-galaxy`:
 $ ansible-galaxy install franklinkim.apache2
 ```
 
-Using `arm` ([Ansible Role Manager](https://github.com/mirskytech/ansible-role-manager/)):
+Using `requirements.yml`:
 
 ```
-$ arm install franklinkim.apache2
+- src: franklinkim.apache2
 ```
 
 Using `git`:
 
 ```
-$ git clone https://github.com/weareinteractive/ansible-apache2.git
+$ git clone https://github.com/weareinteractive/ansible-apache2.git franklinkim.apache2
 ```
 
 ## Dependencies
 
-* Tested with Apache 2.2 | 2.4
+* Ansible 1.9
+
+## Related (see example)
+
 * [franklinkim.openssl](https://github.com/weareinteractive/ansible-openssl)
 * [franklinkim.htpasswd](https://github.com/weareinteractive/ansible-htpasswd)
 
@@ -46,6 +51,10 @@ $ git clone https://github.com/weareinteractive/ansible-apache2.git
 Here is a list of all the default variables for this role, which are also available in `defaults/main.yml`.
 
 ```
+# package name (version)
+apache2_package: apache2
+# mpm package name (version)
+apache2_mpm_package: apache2-mpm-prefork
 # ports to listen to
 apache2_ports: [80]
 # ssl ports to listen to
@@ -124,8 +133,8 @@ append: false
 
 These are the handlers that are defined in `handlers/main.yml`.
 
-* `reload apache2` 
-* `restart apache2` 
+* `reload apache2`
+* `restart apache2`
 
 ## Rules
 
@@ -150,7 +159,8 @@ These can be included into your site definitions (See Example playbook below).
 
 ```
 - host: all
-  roles: 
+  sudo: yes
+  roles:
     - franklinkim.apache2
   vars:
     apache2_modules:

@@ -30,6 +30,10 @@
 #     append: ''
 #
 
+# package name (version)
+apache2_package: apache2
+# mpm package name (version)
+apache2_mpm_package: apache2-mpm-prefork
 # ports to listen to
 apache2_ports: [80]
 # ssl ports to listen to
