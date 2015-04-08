@@ -3,6 +3,8 @@
 - hosts: all
   sudo: yes
   roles:
+    - franklinkim.openssl
+    - franklinkim.htpasswd
     - franklinkim.apache2
   vars:
     apache2_modules:
