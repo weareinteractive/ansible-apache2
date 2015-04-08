@@ -1,6 +1,7 @@
 ---
 
 - hosts: all
+  sudo: yes
   roles:
     - franklinkim.apache2
   vars:

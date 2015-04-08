@@ -1,7 +1,7 @@
 # Ansible Apache2 Role
 
 [![Build Status](https://img.shields.io/travis/weareinteractive/ansible-apache2.svg)](https://travis-ci.org/weareinteractive/ansible-apache2)
-[![License](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://raw.githubusercontent.com/weareinteractive/ansible-apache2/master/LICENSE)
+[![Galaxy](http://img.shields.io/badge/galaxy-franklinkim.supervisor-blue.svg)](https://galaxy.ansible.com/list#/roles/1364)
 [![GitHub Tags](https://img.shields.io/github/tag/weareinteractive/ansible-apache2.svg)](https://github.com/weareinteractive/ansible-apache2)
 [![GitHub Stars](https://img.shields.io/github/stars/weareinteractive/ansible-apache2.svg)](https://github.com/weareinteractive/ansible-apache2)
 
@@ -39,7 +39,10 @@ $ git clone https://github.com/weareinteractive/ansible-apache2.git franklinkim.
 
 ## Dependencies
 
-* Tested with Apache 2.2 | 2.4
+* Ansible 1.9
+
+## Related (see example)
+
 * [franklinkim.openssl](https://github.com/weareinteractive/ansible-openssl)
 * [franklinkim.htpasswd](https://github.com/weareinteractive/ansible-htpasswd)
 
@@ -48,6 +51,10 @@ $ git clone https://github.com/weareinteractive/ansible-apache2.git franklinkim.
 Here is a list of all the default variables for this role, which are also available in `defaults/main.yml`.
 
 ```
+# package name (version)
+apache2_package: apache2
+# mpm package name (version)
+apache2_mpm_package: apache2-mpm-prefork
 # ports to listen to
 apache2_ports: [80]
 # ssl ports to listen to
