@@ -39,7 +39,7 @@ $ git clone https://github.com/weareinteractive/ansible-apache2.git franklinkim.
 
 ## Dependencies
 
-* Ansible 1.9
+* Ansible >= 1.9
 
 ## Related (see example)
 
@@ -145,15 +145,23 @@ These are the handlers that are defined in `handlers/main.yml`.
 Some configuration fragments will be copied unconditionally to `/etc/apache2/rules`:
 
 * compression.conf
-* cors_ajax.conf
+* content_transform.conf
+* cors.conf
 * cors_images.conf
+* cors_timing.conf
 * cors_web_fonts.conf
+* etag.conf
 * expires.conf
+* file_concatenation.conf
 * filename_based_cache_busting.conf
 * ie_cookies.conf
 * ie_edge.conf
 * mimes.conf
-* security.conf
+* security_file_access.conf
+* security_hsts.conf
+* security_mime.conf
+* security_signiture.conf
+* security_technology.conf
 * ssl.conf
 * utf8.conf
 
