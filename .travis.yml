@@ -18,5 +18,4 @@ before_install:
 #
 #
 script:
-  - docker ps -a
-  - docker exec ansible sh -c "ls -la /opt/ansible"
+  - docker exec -u root ansible sh -c "ls -la /opt/ansible"
