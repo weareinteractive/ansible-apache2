@@ -16,4 +16,4 @@ before_install:
 #
 #
 script:
-  - docker run -v $(pwd):/opt/ansible -v $(pwd):/etc/ansible/roles/franklinkim.apache2 franklinkim/ansible-trusty ./run.sh
+  - docker run -v $(pwd)/test:/opt/ansible -v $(pwd):/etc/ansible/roles/franklinkim.apache2 franklinkim/ansible-trusty ./run.sh
