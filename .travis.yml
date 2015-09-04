@@ -1,6 +1,6 @@
 ---
 
-language: python
+language: ruby
 sudo: required
 env:
   global:
@@ -8,6 +8,7 @@ env:
 services:
   - docker
 before_install:
+  - echo $CI_HOME
   - docker pull franklinkim/ansible-trusty
   - docker run -d --name ansible -v $CI_HOME:/opt/ansible franklinkim/ansible-trusty /bin/sh -c "while true; do ping 8.8.8.8; sleep 1; done"
   - docker ps -a
@@ -17,4 +18,4 @@ before_install:
 #
 #
 script:
-  - docker run franklinkim/ansible-trusty /bin/sh -c "ls -la /opt/ansible"
+  - docker exec -it ansible /bin/sh -c "ls -la /opt/ansible"
