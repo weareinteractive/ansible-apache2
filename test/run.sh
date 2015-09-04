@@ -1,8 +1,8 @@
 #!/bin/bash
 
-echo $(pwd)
+PWD=$(pwd)
+ROLE_NAME=franklinkim.apache2
 
-echo $(dirname $(pwd))
+ln -s $(dirname $PWD) /etc/ansible/roles/$ROLE_NAME
 
-
-#ansible-playbook -vvvv -i 'localhost,' -c local test.yml
+ansible-playbook -vvvv -i 'localhost,' -c local $PWD/test/playbook.yml

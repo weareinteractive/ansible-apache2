@@ -2,13 +2,9 @@
 
 language: ruby
 sudo: required
-env:
-  global:
-    - CI_HOME=`pwd`
 services:
   - docker
 before_install:
-  - echo $CI_HOME
   - docker pull franklinkim/ansible-trusty
 #install:
 #  - ansible-galaxy install franklinkim.openssl
@@ -16,4 +12,4 @@ before_install:
 #
 #
 script:
-  - docker run -v $(pwd)/test:/opt/ansible -v $(pwd):/etc/ansible/roles/franklinkim.apache2 franklinkim/ansible-trusty ./run.sh
+  - docker run -d -v $(pwd):/opt/ansible franklinkim/ansible-trusty test/run.sh
