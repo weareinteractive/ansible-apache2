@@ -19,4 +19,4 @@ script:
   #- docker run -v $(dirname $CI_HOME):/opt/ansible franklinkim/ansible-trusty ansible all -i 'localhost,' -c local -m shell -a 'echo hello world'
   - docker run -v $(pwd):/opt/ansible franklinkim/ansible-trusty ansible all -i 'localhost,' -c local -m shell -a 'pwd'
   - docker run -v $(pwd):/opt/ansible franklinkim/ansible-trusty ansible all -i 'localhost,' -c local -m shell -a 'ls -la'
-  - docker run -v $(pwd):/opt/ansible/franklinkim.apache2 franklinkim/ansible-trusty ansible-playbook -vvvv -i 'localhost,' -c local test.yml
+  - docker run -v $(pwd):/opt/ansible/franklinkim.apache2 franklinkim/ansible-trusty ansible-playbook -vvvv -i 'localhost,' -c local franklinkim.apache2/test.yml
