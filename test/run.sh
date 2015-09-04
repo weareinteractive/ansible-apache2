@@ -1,3 +1,8 @@
 #!/bin/bash
 
-ansible-playbook -vvvv -i 'localhost,' -c local test.yml
+echo $(pwd)
+
+echo $(dirname $(pwd))
+
+
+#ansible-playbook -vvvv -i 'localhost,' -c local test.yml
