@@ -3,8 +3,8 @@
 - hosts: all
   sudo: yes
   roles:
-    - franklinkim.openssl
-    - franklinkim.htpasswd
+    #- franklinkim.openssl
+    #- franklinkim.htpasswd
     - franklinkim.apache2
   vars:
     apache2_modules:
@@ -25,9 +25,9 @@
         name: foobar.local
         rules: ['mimes', 'expires', 'security', 'compression']
         add_webroot: yes
-        auth:
-          name: Foo Bar
-          file: foobar
-        ssl:
-          key_name: foobar.local
-          cert_name: foobar.local
+        #auth:
+        #  name: Foo Bar
+        #  file: foobar
+        #ssl:
+        #  key_name: foobar.local
+        #  cert_name: foobar.local

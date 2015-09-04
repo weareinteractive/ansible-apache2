@@ -1,0 +1,6 @@
+---
+
+- include: manage_default.yml
+- include: manage_modules.yml
+- include: manage_confs.yml
+- include: manage_sites.yml

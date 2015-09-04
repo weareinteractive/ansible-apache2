@@ -1,16 +1,20 @@
 ---
 
 language: python
-python: "2.7"
+sudo: required
+env:
+  global:
+    - CI_HOME=`pwd`
+services:
+  - docker
 before_install:
-  - sudo apt-get update -qq
-  - sudo apt-get install -qq python-apt python-pycurl
-install:
-  - pip install ansible
-  - ansible-galaxy install franklinkim.openssl
-  - ansible-galaxy install franklinkim.htpasswd
+  - docker pull franklinkim/ansible-trusty
+  - docker run -d --name ansible -v $CI_HOME:/opt/ansible franklinkim/ansible-trusty /bin/sh -c "while true; do ping 8.8.8.8; sleep 1; done"
+  - docker ps -a
+#install:
+#  - ansible-galaxy install franklinkim.openssl
+#  - ansible-galaxy install franklinkim.htpasswd
+#
+#
 script:
-  - echo localhost > inventory
-  - ln -s ansible-apache2 ../franklinkim.apache2
-  - ansible-playbook --syntax-check -i inventory test.yml
-  - ansible-playbook -i inventory test.yml --connection=local --sudo -vvvv
+  - docker run franklinkim/ansible-trusty /bin/sh -c "ls -la /opt/ansible"
