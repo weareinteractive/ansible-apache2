@@ -18,4 +18,4 @@ before_install:
 script:
   - docker run -d --name ansible -v $CI_HOME:/opt/ansible franklinkim/ansible-trusty /bin/sh -c "while true; do ping 8.8.8.8; sleep 1; done"
   - docker ps -a
-  - docker exec -d ansible ls -la /opt/ansible
+  - docker exec ansible ls -la /opt/ansible
