@@ -16,6 +16,4 @@ before_install:
 #
 #
 script:
-  - docker run -d --name ansible -v $CI_HOME:/opt/ansible franklinkim/ansible-trusty /bin/sh -c "ansible-playbook -i 'localhost,' -c local /opt/ansible/test.yml"
-  - docker ps -a
-  #- docker exec -u root ansible sh -c "ls -la /opt/ansible"
+  - docker run -v $CI_HOME:/opt/ansible franklinkim/ansible-trusty ansible-playbook -i "localhost," -c local test.yml
