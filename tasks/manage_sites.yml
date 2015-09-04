@@ -13,7 +13,7 @@
     dest: "/etc/apache2/sites-available/{{ item.id }}.conf"
     owner: root
     group: root
-    mode: 0644
+    mode: "0644"
   with_items: apache2_sites
 
 - name: Enabling sites
