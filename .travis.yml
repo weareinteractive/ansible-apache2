@@ -2,6 +2,10 @@
 
 language: ruby
 sudo: required
+env:
+  global:
+    - CI_HOME=`pwd`
+    - ROLE_NAME=franklinkim.apache2
 services:
   - docker
 before_install:
@@ -12,4 +16,4 @@ before_install:
 #
 #
 script:
-  - docker run -v $(pwd):/opt/ansible franklinkim/ansible-trusty test/run.sh
+  - docker run -v $CI_HOME:/opt/ansible franklinkim/ansible-trusty test/run.sh
