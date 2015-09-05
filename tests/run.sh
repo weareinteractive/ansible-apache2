@@ -4,8 +4,11 @@ PWD=$(pwd)
 ROLE_NAME=franklinkim.apache2
 
 echo 'creating role symlink'
-ln -s $(dirname $PWD) /usr/share/ansible/roles/$ROLE_NAME
+ln -s $PWD /usr/share/ansible/roles/$ROLE_NAME
 
+echo 'debug'
+echo $PWD
+ls -la /usr/share/ansible/roles/
 ls -la /usr/share/ansible/roles/$ROLE_NAME/
 ls -la /usr/share/ansible/roles/$ROLE_NAME/tasks
 
