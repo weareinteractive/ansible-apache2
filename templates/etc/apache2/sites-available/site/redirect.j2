@@ -3,7 +3,7 @@
 <VirtualHost {{ item.ip|default('*') }}:{{item.ssl.port|default(443)}}>
   ServerName {{ value }}
 
-  {% include "etc-apache2-sites-available-site/ssl.j2" %}
+  {% include "site/ssl.j2" %}
 
   # logging
   LogLevel warn
