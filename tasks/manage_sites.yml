@@ -9,17 +9,17 @@
 
 - name: Creating sites
   template:
-    src: "{{ item.template|default(apache2_version ~ '/etc-apache2-sites-available-site.j2') }}"
-    dest: "/etc/apache2/sites-available/{{ item.id }}{{ apache2_site_conf_extension }}"
+    src: "{{ item.template|default('etc/apache2/sites-available/site.j2') }}"
+    dest: "/etc/apache2/sites-available/{{ item.id }}.conf"
     owner: root
     group: root
-    mode: 0644
+    mode: "0644"
   with_items: apache2_sites
 
 - name: Enabling sites
   file:
-    src: "/etc/apache2/sites-available/{{ item.id }}{{ apache2_site_conf_extension }}"
-    dest: "/etc/apache2/sites-enabled/{{ item.id }}{{ apache2_site_conf_extension }}"
+    src: "/etc/apache2/sites-available/{{ item.id }}.conf"
+    dest: "/etc/apache2/sites-enabled/{{ item.id }}.conf"
     state: link
   when: item.state is not defined or item.state == 'present'
   with_items: apache2_sites
@@ -27,7 +27,7 @@
 
 - name: Disabling sites
   file:
-    src: "/etc/apache2/sites-enabled/{{ item.id }}{{ apache2_site_conf_extension }}"
+    src: "/etc/apache2/sites-enabled/{{ item.id }}.conf"
     state: absent
   when: item.state is defined and item.state == 'absent'
   with_items: apache2_sites

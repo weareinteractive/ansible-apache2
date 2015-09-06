@@ -22,7 +22,7 @@
   {% if item.auth is defined %}
   # --- auth ------------------------------------------------------------------
 
-  {% include "etc-apache2-sites-available-site/htpasswd.j2" %}
+  {% include "site/htpasswd.j2" %}
   {% endif %}
 
   # --- logging ---------------------------------------------------------------

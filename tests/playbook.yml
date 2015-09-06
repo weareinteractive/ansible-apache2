@@ -23,7 +23,10 @@
       - id: foobar
         state: present
         name: foobar.local
-        rules: ['mimes', 'expires', 'security', 'compression']
+        rules:
+          - mimes
+          - expires
+          - compression
         add_webroot: yes
         auth:
           name: Foo Bar

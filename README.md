@@ -158,7 +158,7 @@ Some configuration fragments will be copied unconditionally to `/etc/apache2/rul
 * ie_edge.conf
 * mimes.conf
 * security_file_access.conf
-* security_hsts.conf
+* security_hosts.conf
 * security_mime.conf
 * security_signiture.conf
 * security_technology.conf
@@ -170,7 +170,7 @@ These can be included into your site definitions (See Example playbook below).
 ## Example playbook
 
 ```
-- host: all
+- hosts: all
   sudo: yes
   roles:
     - franklinkim.openssl
@@ -178,6 +178,7 @@ These can be included into your site definitions (See Example playbook below).
     - franklinkim.apache2
   vars:
     apache2_modules:
+      - { id: ssl, state: present }
       - { id: mime, state: present }
       - { id: headers, state: present }
       - { id: rewrite, state: present }
@@ -192,7 +193,10 @@ These can be included into your site definitions (See Example playbook below).
       - id: foobar
         state: present
         name: foobar.local
-        rules: ['mimes', 'expires', 'security', 'compression']
+        rules:
+          - mimes
+          - expires
+          - compression
         add_webroot: yes
         auth:
           name: Foo Bar
