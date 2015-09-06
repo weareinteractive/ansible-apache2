@@ -8,6 +8,7 @@
     - franklinkim.apache2
   vars:
     apache2_modules:
+      - { id: ssl, state: present }
       - { id: mime, state: present }
       - { id: headers, state: present }
       - { id: rewrite, state: present }
