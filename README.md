@@ -21,19 +21,19 @@
 
 Using `ansible-galaxy`:
 
-```
+```shell
 $ ansible-galaxy install franklinkim.apache2
 ```
 
 Using `requirements.yml`:
 
-```
+```yaml
 - src: franklinkim.apache2
 ```
 
 Using `git`:
 
-```
+```shell
 $ git clone https://github.com/weareinteractive/ansible-apache2.git franklinkim.apache2
 ```
 
@@ -45,7 +45,7 @@ $ git clone https://github.com/weareinteractive/ansible-apache2.git franklinkim.
 
 Here is a list of all the default variables for this role, which are also available in `defaults/main.yml`.
 
-```
+```yaml
 ---
 # apache2_module:
 #   - { id: auth, state: absent }
@@ -114,7 +114,7 @@ apache2_keys_path: /etc/ssl/private
 
 These are the handlers that are defined in `handlers/main.yml`.
 
-```
+```yaml
 ---
 
 - name: restart apache2
@@ -129,7 +129,8 @@ These are the handlers that are defined in `handlers/main.yml`.
 
 ## Rules
 
-Some configuration fragments obtained from [HTML 5 Boilerplate](http://html5boilerplate.com/) will be copied to `/etc/apache2/rules` which can then be used inside your vhost configurations.
+Some configuration fragments obtained from [HTML 5 Boilerplate](http://html5boilerplate.com/) will be copied to
+`/etc/apache2/rules` which can then be used inside your vhost configurations (see usage below).
 
 * compression
 * content_transform
@@ -156,7 +157,7 @@ Some configuration fragments obtained from [HTML 5 Boilerplate](http://html5boil
 
 This is an example playbook:
 
-```
+```yaml
 ---
 # this examples uses related roles:
 #
@@ -202,7 +203,7 @@ This is an example playbook:
 
 ## Testing
 
-```
+```shell
 $ git clone https://github.com/weareinteractive/ansible-apache2.git
 $ cd ansible-apache2
 $ vagrant up
@@ -217,9 +218,9 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
 
-To update the `README.md` file please install and run `ansible-role`:
+*Note: To update the `README.md` file please install and run `ansible-role`:*
 
-```
+```shell
 $ gem install ansible-role
 $ ansible-role docgen
 ```
