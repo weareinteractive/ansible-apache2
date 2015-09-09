@@ -1,7 +1,4 @@
 ---
-# For more information about default variables see:
-# http://www.ansibleworks.com/docs/playbooks_variables.html#id26
-#
 # apache2_module:
 #   - { id: auth, state: absent }
 #   - { id: rewrite, state: present }
