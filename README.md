@@ -1,11 +1,11 @@
-# Ansible Apache2 Role
+# Ansible franklinkim.apache2 role
 
 [![Build Status](https://img.shields.io/travis/weareinteractive/ansible-apache2.svg)](https://travis-ci.org/weareinteractive/ansible-apache2)
-[![Galaxy](http://img.shields.io/badge/galaxy-franklinkim.supervisor-blue.svg)](https://galaxy.ansible.com/list#/roles/1364)
+[![Galaxy](http://img.shields.io/badge/galaxy-franklinkim.apache2-blue.svg)](https://galaxy.ansible.com/list#/roles/1364)
 [![GitHub Tags](https://img.shields.io/github/tag/weareinteractive/ansible-apache2.svg)](https://github.com/weareinteractive/ansible-apache2)
 [![GitHub Stars](https://img.shields.io/github/stars/weareinteractive/ansible-apache2.svg)](https://github.com/weareinteractive/ansible-apache2)
 
-> `apache2` is an [ansible](http://www.ansible.com) role which:
+> `franklinkim.apache2` is an [ansible](http://www.ansible.com) role which:
 >
 > * installs apache2
 > * configures apache2
@@ -41,16 +41,40 @@ $ git clone https://github.com/weareinteractive/ansible-apache2.git franklinkim.
 
 * Ansible >= 1.9
 
-## Related (see example)
-
-* [franklinkim.openssl](https://github.com/weareinteractive/ansible-openssl)
-* [franklinkim.htpasswd](https://github.com/weareinteractive/ansible-htpasswd)
-
 ## Variables
 
 Here is a list of all the default variables for this role, which are also available in `defaults/main.yml`.
 
 ```
+---
+# apache2_module:
+#   - { id: auth, state: absent }
+#   - { id: rewrite, state: present }
+# apache2_confs:
+#   - { id: security, state: absent }
+#   - { name: mime, state: present }
+# apache2_sites:
+#   - id: mysite (required)
+#     name: mysite.local (required)
+#     ip: '*'
+#     port: 80
+#     state: present
+#     add_webroot: no
+#     template: path/to/template.j2
+#     rules: []
+#     aliases: []
+#     redirects: []
+#     ssl:
+#       port: 443
+#       key_name: mykey
+#       cert_name: mycert
+#       chain_name: mychain
+#     auth:
+#       name: mysite
+#       file: mysite
+#     append: ''
+#
+
 # package name (version)
 apache2_package: apache2
 # mpm package name (version)
@@ -83,93 +107,62 @@ apache2_trace_enable: 'Off'
 apache2_certs_path: /etc/ssl/certs
 # path to keys
 apache2_keys_path: /etc/ssl/private
-```
 
-Module and confs might be defined through:
-
-```
-# id of the conf or module
-id: auth
-# state: absent | present
-state: absent
-```
-
-A site might be defined through:
-
-```
-# site id (required)
-id: foo
-# server name (required)
-name: foo.com
-# ip to listen to
-ip: '*'
-# port to listen to
-port: 80
-# state: present | absent
-state: present
-# create the /var/www/[id]/htdocs folder
-add_webroot: no
-# path to your own site template
-template: path/to/template.j2
-# /etc/apache2/rules/[rule].conf to include
-rules: []
-# list of server aliases
-aliases: []
-# list of server redirects
-redirects: []
-# enable ssl
-ssl:
-  # port to listen to
-  port: 443
-  # @see franklinkim.openssl
-  key_name: mykey
-  cert_name: mycert
-# enable auth
-auth:
-  # @see franklinkim.htpasswd
-  name: foo
-  file: foo
-# custom string to append to the site
-append: false
 ```
 
 ## Handlers
 
 These are the handlers that are defined in `handlers/main.yml`.
 
-* `reload apache2`
-* `restart apache2`
+```
+---
+
+- name: restart apache2
+  service: name=apache2 state=restarted
+  when: apache2_service_state != 'stopped'
+
+- name: reload apache2
+  service: name=apache2 state=reloaded
+  when: apache2_service_state != 'stopped'
+
+```
 
 ## Rules
 
-Some configuration fragments will be copied unconditionally to `/etc/apache2/rules`:
+Some configuration fragments obtained from [HTML 5 Boilerplate](http://html5boilerplate.com/) will be copied to `/etc/apache2/rules` which can then be used inside your vhost configurations.
 
-* compression.conf
-* content_transform.conf
-* cors.conf
-* cors_images.conf
-* cors_timing.conf
-* cors_web_fonts.conf
-* etag.conf
-* expires.conf
-* file_concatenation.conf
-* filename_based_cache_busting.conf
-* ie_cookies.conf
-* ie_edge.conf
-* mimes.conf
-* security_file_access.conf
-* security_hosts.conf
-* security_mime.conf
-* security_signiture.conf
-* security_technology.conf
-* ssl.conf
-* utf8.conf
+* compression
+* content_transform
+* cors
+* cors_images
+* cors_timing
+* cors_web_fonts
+* etag
+* expires
+* file_concatenation
+* filename_based_cache_busting
+* ie_cookies
+* ie_edge
+* mimes
+* security_file_access
+* security_hosts
+* security_mime
+* security_signiture
+* security_technology
+* ssl
+* utf8
 
-These can be included into your site definitions (See Example playbook below).
+## Usage
 
-## Example playbook
+This is an example playbook:
 
 ```
+---
+# this examples uses related roles:
+#
+# - franklinkim.openssl  (https://github.com/weareinteractive/ansible-openssl)
+# - franklinkim.htpasswd (https://github.com/weareinteractive/ansible-htpasswd)
+
 - hosts: all
   sudo: yes
   roles:
@@ -204,6 +197,7 @@ These can be included into your site definitions (See Example playbook below).
         ssl:
           key_name: foobar.local
           cert_name: foobar.local
+
 ```
 
 ## Testing
@@ -222,6 +216,13 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+To update the `README.md` file please install and run `ansible-role`:
+
+```
+$ gem install ansible-role
+$ ansible-role docgen
+```
 
 ## License
 Copyright (c) We Are Interactive under the MIT license.

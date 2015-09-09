@@ -1,4 +1,8 @@
 ---
+# this examples uses related roles:
+#
+# - franklinkim.openssl  (https://github.com/weareinteractive/ansible-openssl)
+# - franklinkim.htpasswd (https://github.com/weareinteractive/ansible-htpasswd)
 
 - hosts: all
   sudo: yes

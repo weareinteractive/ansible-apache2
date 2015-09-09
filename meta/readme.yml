@@ -1,0 +1,46 @@
+---
+
+galaxy_name: franklinkim.apache2
+github_user: weareinteractive
+github_name: ansible-apache2
+badges: |
+  [![Build Status](https://img.shields.io/travis/weareinteractive/ansible-apache2.svg)](https://travis-ci.org/weareinteractive/ansible-apache2)
+  [![Galaxy](http://img.shields.io/badge/galaxy-franklinkim.apache2-blue.svg)](https://galaxy.ansible.com/list#/roles/1364)
+  [![GitHub Tags](https://img.shields.io/github/tag/weareinteractive/ansible-apache2.svg)](https://github.com/weareinteractive/ansible-apache2)
+  [![GitHub Stars](https://img.shields.io/github/stars/weareinteractive/ansible-apache2.svg)](https://github.com/weareinteractive/ansible-apache2)
+description: |
+  > * installs apache2
+  > * configures apache2
+  > * enables/disables confs
+  > * creates sites
+  > * enables/disables sites
+  > * enables/disables modules
+  > * optionally removes default host
+  > * adds rules
+  > * configures service
+after_handlers: |
+  ## Rules
+
+  Some configuration fragments obtained from [HTML 5 Boilerplate](http://html5boilerplate.com/) will be copied to
+  `/etc/apache2/rules` which can then be used inside your vhost configurations (see usage below).
+
+  * compression
+  * content_transform
+  * cors
+  * cors_images
+  * cors_timing
+  * cors_web_fonts
+  * etag
+  * expires
+  * file_concatenation
+  * filename_based_cache_busting
+  * ie_cookies
+  * ie_edge
+  * mimes
+  * security_file_access
+  * security_hosts
+  * security_mime
+  * security_signiture
+  * security_technology
+  * ssl
+  * utf8
