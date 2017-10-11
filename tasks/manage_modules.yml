@@ -6,7 +6,7 @@
   args:
     creates: "/etc/apache2/mods-enabled/{{ item.id }}.load"
   when: item.state is not defined or item.state != 'absent'
-  with_items: apache2_modules
+  with_items: "{{ apache2_modules }} "
   notify: reload apache2
 
 - name: Disabling modules
@@ -15,5 +15,5 @@
   args:
     removes: "/etc/apache2/mods-enabled/{{ item.id }}.load"
   when: item.state is defined and item.state == 'absent'
-  with_items: apache2_modules
+  with_items: "{{ apache2_modules }}"
   notify: reload apache2

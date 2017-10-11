@@ -5,7 +5,7 @@
     dest: "/var/www/{{ item.id }}/htdocs"
     state: directory
   when: item.add_webroot is defined and item.add_webroot == true
-  with_items: apache2_sites
+  with_items: "{{ apache2_sites }}"
 
 - name: Creating sites
   template:
@@ -14,7 +14,7 @@
     owner: root
     group: root
     mode: "0644"
-  with_items: apache2_sites
+  with_items: "{{ apache2_sites }}"
 
 - name: Enabling sites
   file:
@@ -22,7 +22,7 @@
     dest: "/etc/apache2/sites-enabled/{{ item.id }}.conf"
     state: link
   when: item.state is not defined or item.state == 'present'
-  with_items: apache2_sites
+  with_items: "{{ apache2_sites }}"
   notify: reload apache2
 
 - name: Disabling sites
@@ -30,5 +30,5 @@
     src: "/etc/apache2/sites-enabled/{{ item.id }}.conf"
     state: absent
   when: item.state is defined and item.state == 'absent'
-  with_items: apache2_sites
+  with_items: "{{ apache2_sites }}"
   notify: reload apache2
