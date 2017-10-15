@@ -1,0 +1,4 @@
+[clog]
+changelog = "CHANGELOG.md"
+repository = "https://github.com/weareinteractive/ansible-apache2"
+from-latest-tag = true
