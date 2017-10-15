@@ -1,12 +1,13 @@
 ---
 # this examples uses related roles:
 #
+# - weareinteractive.apt  (https://github.com/weareinteractive/ansible-apt)
 # - franklinkim.openssl  (https://github.com/weareinteractive/ansible-openssl)
 # - franklinkim.htpasswd (https://github.com/weareinteractive/ansible-htpasswd)
 
 - hosts: all
-  sudo: yes
   roles:
+    - weareinteractive.apt
     - franklinkim.openssl
     - franklinkim.htpasswd
     - franklinkim.apache2

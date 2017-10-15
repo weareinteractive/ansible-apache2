@@ -5,7 +5,7 @@
 [![GitHub Tags](https://img.shields.io/github/tag/weareinteractive/ansible-apache2.svg)](https://github.com/weareinteractive/ansible-apache2)
 [![GitHub Stars](https://img.shields.io/github/stars/weareinteractive/ansible-apache2.svg)](https://github.com/weareinteractive/ansible-apache2)
 
-> `franklinkim.apache2` is an [ansible](http://www.ansible.com) role which:
+> `franklinkim.apache2` is an [Ansible](http://www.ansible.com) role which:
 >
 > * installs apache2
 > * configures apache2
@@ -39,7 +39,7 @@ $ git clone https://github.com/weareinteractive/ansible-apache2.git franklinkim.
 
 ## Dependencies
 
-* Ansible >= 1.9
+* Ansible >= 2.0
 
 ## Variables
 
@@ -47,6 +47,9 @@ Here is a list of all the default variables for this role, which are also availa
 
 ```yaml
 ---
+# apache2_packages:
+#   - apache2
+#   - apache2-mpm-prefork
 # apache2_module:
 #   - { id: auth, state: absent }
 #   - { id: rewrite, state: present }
@@ -75,10 +78,9 @@ Here is a list of all the default variables for this role, which are also availa
 #     append: ''
 #
 
-# package name (version)
-apache2_package: apache2
-# mpm package name (version)
-apache2_mpm_package: apache2-mpm-prefork
+# packages (versions)
+apache2_packages:
+  - apache2
 # ports to listen to
 apache2_ports: [80]
 # ssl ports to listen to
@@ -161,12 +163,13 @@ This is an example playbook:
 ---
 # this examples uses related roles:
 #
+# - weareinteractive.apt  (https://github.com/weareinteractive/ansible-apt)
 # - franklinkim.openssl  (https://github.com/weareinteractive/ansible-openssl)
 # - franklinkim.htpasswd (https://github.com/weareinteractive/ansible-htpasswd)
 
 - hosts: all
-  sudo: yes
   roles:
+    - weareinteractive.apt
     - franklinkim.openssl
     - franklinkim.htpasswd
     - franklinkim.apache2
@@ -201,16 +204,17 @@ This is an example playbook:
 
 ```
 
+
 ## Testing
 
 ```shell
 $ git clone https://github.com/weareinteractive/ansible-apache2.git
 $ cd ansible-apache2
-$ vagrant up
+$ make test
 ```
 
 ## Contributing
-In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests and examples for any new or changed functionality.
+In lieu of a formal style guide, take care to maintain the existing coding style. Add unit tests and examples for any new or changed functionality.
 
 1. Fork it
 2. Create your feature branch (`git checkout -b my-new-feature`)
