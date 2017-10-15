@@ -1,4 +1,7 @@
 ---
+# apache2_packages:
+#   - apache2
+#   - apache2-mpm-prefork
 # apache2_module:
 #   - { id: auth, state: absent }
 #   - { id: rewrite, state: present }
@@ -27,10 +30,9 @@
 #     append: ''
 #
 
-# package name (version)
-apache2_package: apache2
-# mpm package name (version)
-apache2_mpm_package: apache2-mpm-prefork
+# packages (versions)
+apache2_packages:
+  - apache2
 # ports to listen to
 apache2_ports: [80]
 # ssl ports to listen to
