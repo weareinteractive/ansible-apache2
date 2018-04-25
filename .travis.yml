@@ -9,10 +9,6 @@ env:
     - role: franklinkim.newrelic
   matrix:
     - distribution: Ubuntu
-      distribution_version: yakkety
-      init: /lib/systemd/systemd
-      run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
-    - distribution: Ubuntu
       distribution_version: xenial
       init: /lib/systemd/systemd
       run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
@@ -99,7 +95,6 @@ before_install:
   - docker pull ansiblecheck/ansiblecheck:"${distribution,,}"-"${distribution_version}"
 
 script:
-  - docker build -t ansiblecheck/ansiblecheck:"${distribution,,}"-"${distribution_version}" core/"${distribution}"/"${distribution_version}"
   - container_id=$(mktemp)
   # Start The Built Container In The Background
   - 'docker run --detach --volume="${PWD}":/etc/ansible/roles/${role}:ro ${run_opts} ansiblecheck/ansiblecheck:"${distribution,,}"-"${distribution_version}" "${init}" > "${container_id}"'
