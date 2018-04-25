@@ -13,7 +13,7 @@ env:
 before_install:
   - docker pull williamyeh/ansible:${distribution}
 script:
-  - docker run -d --privileged -v /sys/fs/cgroup:/sys/fs/cgroup:ro -v ${PWD}:/etc/ansible/roles/${role}:ro --name ${distribution} williamyeh/ansible:${distribution} init
+  - docker run -d --privileged -v /sys/fs/cgroup:/sys/fs/cgroup:ro -v ${PWD}:/etc/ansible/roles/${role}:ro --name ${distribution} williamyeh/ansible:${distribution} tail -f /dev/null
   - docker exec ${distribution} ansible-galaxy install weareinteractive.apt franklinkim.openssl franklinkim.htpasswd
   - docker exec ${distribution} env ANSIBLE_FORCE_COLOR=1 ansible-playbook -v -i 'localhost,' -c local /etc/ansible/roles/${role}/tests/main.yml --syntax-check
   - docker exec ${distribution} env ANSIBLE_FORCE_COLOR=1 ansible-playbook -vvvv -i 'localhost,' -c local /etc/ansible/roles/${role}/tests/main.yml
