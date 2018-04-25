@@ -19,5 +19,5 @@ script:
   - docker exec ${distribution} env ANSIBLE_FORCE_COLOR=1 ansible-playbook -vvvv -i 'localhost,' -c local /etc/ansible/roles/${role}/tests/main.yml
   - docker rm -f ${distribution}
 
-#notifications:
-#  webhooks: https://galaxy.ansible.com/api/v1/notifications/
+notifications:
+  webhooks: https://galaxy.ansible.com/api/v1/notifications/
