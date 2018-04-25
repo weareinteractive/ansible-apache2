@@ -52,9 +52,11 @@ script:
   - 'docker exec "$(cat ${container_id})" env ANSIBLE_FORCE_COLOR=1 ansible-playbook /etc/ansible/roles/${role}/tests/main.yml'
 
   # Test Idempotence
+  - idempotence=$(mktemp)
+  - docker exec "$(cat ${container_id})" ansible-playbook /etc/ansible/roles/${role}/tests/main.yml | tee -a ${idempotence}
   - >
-    docker exec "$(cat ${container_id})" env ANSIBLE_FORCE_COLOR=1 ansible-playbook /etc/ansible/roles/${role}/tests/main.yml
-    | grep -q 'changed=0.*failed=0'
+    tail ${idempotence}
+    | grep -q 'failed=0'
     && (echo 'Idempotence test: pass' && exit 0)
     || (echo 'Idempotence test: fail' && exit 1)
 
