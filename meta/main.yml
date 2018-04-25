@@ -121,7 +121,7 @@ platforms:
   #    - wily
       - xenial
   - name: Debian
-  #  versions:
+    versions:
   #    - all
   #    - etch
       - jessie
