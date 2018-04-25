@@ -1,3 +1,17 @@
+<a name="1.5.0"></a>
+## 1.5.0 (2018-04-25)
+
+
+#### Bug Fixes
+
+*   add unit value to tests so it does not fail on debian9 ([65b029e9](https://github.com/weareinteractive/ansible-apache2/commit/65b029e96d2ad48a27a70110597f8b7eb296fdae))
+
+#### Features
+
+*   update depricated include module ([dbcb0a69](https://github.com/weareinteractive/ansible-apache2/commit/dbcb0a6913b97a7bfb9edfa924855162bedf28dc))
+
+
+
 <a name="1.4.1"></a>
 ### 1.4.1 (2017-10-15)
 
