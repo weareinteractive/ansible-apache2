@@ -185,7 +185,13 @@ This is an example playbook:
         users:
           - { name: foobar, password: foobar }
     openssl_self_signed:
-      - { name: 'foobar.local', country: 'DE', state: 'Bavaria', city: 'Munich', organization: 'Foo Bar', email: 'foo@bar.com' }
+      - name: 'foobar.local'
+        country: 'DE'
+        state: 'Bavaria'
+        city: 'Munich'
+        organization: 'Foo Bar'
+        unit: 'Foo Bar Unit'
+        email: 'foo@bar.com'
     apache2_sites:
       - id: foobar
         state: present
