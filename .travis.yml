@@ -5,7 +5,7 @@ services:
   - docker
 env:
   global:
-    - role: franklinkim.newrelic
+    - role: franklinkim.apache2
   matrix:
     - distribution: Ubuntu
       distribution_version: xenial
