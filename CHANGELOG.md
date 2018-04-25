@@ -1,3 +1,17 @@
+<a name="1.5.1"></a>
+### 1.5.1 (2018-04-25)
+
+
+#### Bug Fixes
+
+*   fix ansible tag ([698f75a6](https://github.com/weareinteractive/ansible-apache2/commit/698f75a6c2ca95131960fa668edc9fa1691476a9))
+
+#### Features
+
+*   update tested distributions ([a5be8152](https://github.com/weareinteractive/ansible-apache2/commit/a5be8152f3d4d572aaf3e22656afe8d1fa3fd7d1))
+
+
+
 <a name="1.5.0"></a>
 ## 1.5.0 (2018-04-25)
 
