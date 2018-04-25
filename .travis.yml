@@ -1,4 +1,6 @@
 ---
+sudo: required
+
 language: phyton
 python: "2.7"
 
@@ -7,11 +9,24 @@ sudo: required
 services:
   - docker
 
+env:
+  global:
+    - role: franklinkim.apache2
+  matrix:
+    - distribution: ubuntu16.04
+    #- distribution: ubuntu14.04
+    #- distribution: debian9
+    #- distribution: debian8
+
+
 before_install:
-  - docker pull williamyeh/ansible:ubuntu16.04
+  - docker pull williamyeh/ansible:${distribution}
+  - docker run -d --privileged -v /sys/fs/cgroup:/sys/fs/cgroup:ro -v ${PWD}:/etc/ansible/roles/${role}:ro williamyeh/ansible:${distribution}
 
 script:
-  - make test
+  - ansible-galaxy install weareinteractive.apt franklinkim.openssl franklinkim.htpasswd
+  - ansible-playbook -vv -i 'localhost,' -c local /etc/ansible/roles/${role}/tests/main.yml --syntax-check
+  - ansible-playbook -vv -i 'localhost,' -c local /etc/ansible/roles/${role}/tests/main.yml
 
-notifications:
-  webhooks: https://galaxy.ansible.com/api/v1/notifications/
+#notifications:
+#  webhooks: https://galaxy.ansible.com/api/v1/notifications/
