@@ -3,11 +3,14 @@ sudo: required
 language: python
 services:
   - docker
-
 env:
   global:
     - role: franklinkim.newrelic
   matrix:
+    - distribution: Ubuntu
+      distribution_version: yakkety
+      init: /lib/systemd/systemd
+      run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
     - distribution: Ubuntu
       distribution_version: xenial
       init: /lib/systemd/systemd
@@ -40,61 +43,13 @@ env:
       distribution_version: wheezy
       init: /sbin/init
       run_opts: ""
-    - distribution: Fedora
-      distribution_version: "24"
-      init: /usr/lib/systemd/systemd
-      run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
-    - distribution: Fedora
-      distribution_version: "23"
-      init: /usr/lib/systemd/systemd
-      run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
-    - distribution: ArchLinux
-      distribution_version: latest
-      init: /usr/lib/systemd/systemd
-      run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
-    - distribution: OracleLinux
-      distribution_version: "7.3"
-      init: /usr/lib/systemd/systemd
-      run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
-    - distribution: OracleLinux
-      distribution_version: "7.2"
-      init: /usr/lib/systemd/systemd
-      run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
-    - distribution: OracleLinux
-      distribution_version: "7.1"
-      init: /usr/lib/systemd/systemd
-      run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
-    - distribution: OracleLinux
-      distribution_version: "7.0"
-      init: /usr/lib/systemd/systemd
-      run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
-    - distribution: OracleLinux
-      distribution_version: "6.8"
-      init: /sbin/init
-      run_opts: ""
-    - distribution: OracleLinux
-      distribution_version: "6.7"
-      init: /sbin/init
-      run_opts: ""
-    - distribution: OracleLinux
-      distribution_version: "6.6"
-      init: /sbin/init
-      run_opts: ""
-    - distribution: opensuse
-      distribution_version: "42.2"
-      init: /usr/lib/systemd/systemd
-      run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
-    - distribution: opensuse
-      distribution_version: "42.1"
-      init: /usr/lib/systemd/systemd
-      run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
 
 before_install:
   - sudo apt-get update
   - sudo apt-get -y -o Dpkg::Options::="--force-confnew" install docker-ce
-  - docker pull ansiblecheck/ansiblecheck:"${distribution,,}"-"${distribution_version}"
 
 script:
+  - docker build -t ansiblecheck/ansiblecheck:"${distribution,,}"-"${distribution_version}" core/"${distribution}"/"${distribution_version}"
   - container_id=$(mktemp)
   # Start The Built Container In The Background
   - 'docker run --detach --volume="${PWD}":/etc/ansible/roles/${role}:ro ${run_opts} ansiblecheck/ansiblecheck:"${distribution,,}"-"${distribution_version}" "${init}" > "${container_id}"'
