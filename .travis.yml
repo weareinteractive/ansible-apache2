@@ -1,30 +1,22 @@
 ---
 sudo: required
-
-#language: phyton
-#python: "2.7"
-
 services:
   - docker
-
 env:
   global:
     - role: franklinkim.apache2
   matrix:
     - distribution: ubuntu16.04
-    #- distribution: ubuntu14.04
-    #- distribution: debian9
-    #- distribution: debian8
-
-
+    - distribution: ubuntu14.04
+    - distribution: debian9
+    - distribution: debian8
 before_install:
   - docker pull williamyeh/ansible:${distribution}
-
 script:
   - docker run -d --privileged -v /sys/fs/cgroup:/sys/fs/cgroup:ro -v ${PWD}:/etc/ansible/roles/${role}:ro --name ${distribution} williamyeh/ansible:${distribution} init
-  - docker exec ${distribution} env ANSIBLE_FORCE_COLOR=1 ansible-galaxy install weareinteractive.apt franklinkim.openssl franklinkim.htpasswd
-  - docker exec ${distribution} env ANSIBLE_FORCE_COLOR=1 ansible-playbook -vv -i 'localhost,' -c local /etc/ansible/roles/${role}/tests/main.yml --syntax-check
-  - docker exec ${distribution} env ANSIBLE_FORCE_COLOR=1 ansible-playbook -vv -i 'localhost,' -c local /etc/ansible/roles/${role}/tests/main.yml
+  - docker exec ${distribution} ansible-galaxy install weareinteractive.apt franklinkim.openssl franklinkim.htpasswd
+  - docker exec ${distribution} env ANSIBLE_FORCE_COLOR=1 ansible-playbook -v -i 'localhost,' -c local /etc/ansible/roles/${role}/tests/main.yml --syntax-check
+  - docker exec ${distribution} env ANSIBLE_FORCE_COLOR=1 ansible-playbook -vvvv -i 'localhost,' -c local /etc/ansible/roles/${role}/tests/main.yml
   - docker rm -f ${distribution}
 
 #notifications:
