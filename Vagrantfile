@@ -1,6 +1,18 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+$script = <<-SCRIPT
+if [ -x "$(command -v apt-get)" ]; then
+  apt-get update
+  apt-get install -y python
+elif [ -x "$(command -v yum)" ]; then
+  // yum install ...
+else
+  // printenv
+fi
+echo "done"
+SCRIPT
+
 Vagrant.configure("2") do |config|
   config.vbguest.no_remote = true
   config.vbguest.auto_update = false
@@ -9,8 +21,12 @@ Vagrant.configure("2") do |config|
     instance.vm.box = 'ubuntu/xenial64'
   end
 
-  config.vm.provision "shell", inline: "sudo apt-get update"
-  config.vm.provision "shell", inline: "sudo apt-get install -y python"
+  config.vm.define 'trusty' do |instance|
+    instance.vm.box = 'ubuntu/trusty64'
+  end
+
+  # install dependencies
+  config.vm.provision "shell", inline: $script
 
   # View the documentation for the provider you're using for more
   # information on available options.
