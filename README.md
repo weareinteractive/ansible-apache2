@@ -39,7 +39,7 @@ $ git clone https://github.com/weareinteractive/ansible-apache2.git franklinkim.
 
 ## Dependencies
 
-* Ansible >= 2.0
+* Ansible >= 2.4
 
 ## Variables
 
@@ -164,26 +164,28 @@ This is an example playbook:
 # this examples uses related roles:
 #
 # - weareinteractive.apt  (https://github.com/weareinteractive/ansible-apt)
-# - franklinkim.openssl  (https://github.com/weareinteractive/ansible-openssl)
-# - franklinkim.htpasswd (https://github.com/weareinteractive/ansible-htpasswd)
+# - weareinteractive.openssl  (https://github.com/weareinteractive/ansible-openssl)
+# - weareinteractive.htpasswd (https://github.com/weareinteractive/ansible-htpasswd)
 
 - hosts: all
+  become: yes
   roles:
     - weareinteractive.apt
-    - franklinkim.openssl
-    - franklinkim.htpasswd
+    - weareinteractive.openssl
+    - weareinteractive.htpasswd
     - franklinkim.apache2
   vars:
+    htpasswd:
+      - name: foobar
+        users:
+          - { name: foobar, password: foobar }
     apache2_modules:
       - { id: ssl, state: present }
       - { id: mime, state: present }
       - { id: headers, state: present }
       - { id: rewrite, state: present }
     apache2_remove_default: yes
-    htpasswd:
-      - name: foobar
-        users:
-          - { name: foobar, password: foobar }
+    openssl_generate_csr: yes
     openssl_self_signed:
       - name: 'foobar.local'
         country: 'DE'
