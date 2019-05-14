@@ -15,6 +15,7 @@
     group: root
     mode: "0644"
   with_items: "{{ apache2_sites }}"
+  notify: reload apache2
 
 - name: Enabling sites
   file:
