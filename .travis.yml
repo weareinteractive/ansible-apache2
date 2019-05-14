@@ -19,10 +19,10 @@ env:
       distribution_version: "9"
       init: /lib/systemd/systemd
       run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
-    - distribution: Debian
-      distribution_version: "8"
-      init: /lib/systemd/systemd
-      run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
+    #- distribution: Debian
+    #  distribution_version: "8"
+    #  init: /lib/systemd/systemd
+    #  run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
 
 before_install:
   - sudo apt-get update
@@ -35,7 +35,7 @@ script:
   - 'docker run --detach --volume="${PWD}":/etc/ansible/roles/${role}:ro ${run_opts} ansiblecheck/ansiblecheck:"${distribution,,}"-"${distribution_version}" "${init}" > "${container_id}"'
 
   # Optionally install dependencies
-  - 'docker exec --tty "$(cat ${container_id})" env TERM=xterm ansible-galaxy install -c weareinteractive.apt weareinteractive.openssl'
+  - 'docker exec --tty "$(cat ${container_id})" env TERM=xterm ansible-galaxy install -c weareinteractive.apt weareinteractive.openssl weareinteractive.htpasswd'
 
   # Ansible syntax check.
   - 'docker exec --tty "$(cat ${container_id})" env TERM=xterm ansible-playbook /etc/ansible/roles/${role}/tests/main.yml --syntax-check'

@@ -2,7 +2,7 @@ PWD=$(shell pwd)
 ROLE_NAME=franklinkim.apache2
 ROLE_PATH=/etc/ansible/roles/$(ROLE_NAME)
 TEST_VERSION=ansible --version
-TEST_DEPS=ansible-galaxy install -c weareinteractive.apt weareinteractive.openssl
+TEST_DEPS=ansible-galaxy install -c weareinteractive.apt weareinteractive.openssl weareinteractive.htpasswd
 TEST_SYNTAX=ansible-playbook -v -i 'localhost,' -c local $(ROLE_PATH)/tests/main.yml --syntax-check
 TEST_PLAYBOOK=ansible-playbook -vvvv -i 'localhost,' -c local $(ROLE_PATH)/tests/main.yml
 TEST_IDEMPOTENT=$(TEST_PLAYBOOK) | grep -q 'changed=0.*failed=0' && (echo 'Idempotence test: pass' && exit 0) || (echo 'Idempotence test: fail' && exit 1)
@@ -16,9 +16,6 @@ ubuntu18.04: .run
 
 ubuntu16.04: dist=ubuntu-16.04
 ubuntu16.04: .run
-
-ubuntu14.04: dist=ubuntu-14.04
-ubuntu14.04: .run
 
 debian9: dist=debian-9
 debian9: .run
