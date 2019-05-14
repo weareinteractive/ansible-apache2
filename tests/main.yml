@@ -10,7 +10,6 @@
   roles:
     - weareinteractive.apt
     - weareinteractive.openssl
-    - franklinkim.htpasswd
     - franklinkim.apache2
   vars:
     apache2_modules:
@@ -19,10 +18,6 @@
       - { id: headers, state: present }
       - { id: rewrite, state: present }
     apache2_remove_default: yes
-    htpasswd:
-      - name: foobar
-        users:
-          - { name: foobar, password: foobar }
     openssl_generate_csr: yes
     openssl_self_signed:
       - name: 'foobar.local'
@@ -41,9 +36,6 @@
           - expires
           - compression
         add_webroot: yes
-        auth:
-          name: Foo Bar
-          file: foobar
         ssl:
           key_name: foobar.local
           cert_name: foobar.local
