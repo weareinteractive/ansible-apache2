@@ -10,7 +10,7 @@
   roles:
     - weareinteractive.apt
     - weareinteractive.openssl
-    - franklinkim.htpasswd
+    - weareinteractive.htpasswd
     - franklinkim.apache2
   vars:
     htpasswd:
