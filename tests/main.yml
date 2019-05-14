@@ -23,6 +23,7 @@
       - name: foobar
         users:
           - { name: foobar, password: foobar }
+    openssl_generate_csr: yes
     openssl_self_signed:
       - name: 'foobar.local'
         country: 'DE'
