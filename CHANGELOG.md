@@ -1,3 +1,14 @@
+<a name="1.5.2"></a>
+### 1.5.2 (2019-05-14)
+
+
+#### Bug Fixes
+
+*   fix deprication warning ([c42d2ce2](https://github.com/weareinteractive/ansible-apache2/commit/c42d2ce2ec7ac81cd7d751e807bd73772d63ff2b))
+*   fix lint errors ([f2983cd7](https://github.com/weareinteractive/ansible-apache2/commit/f2983cd7971c200910e033c6f8e4e4e2801b69f6))
+
+
+
 <a name="1.5.1"></a>
 ### 1.5.1 (2018-04-25)
 
