@@ -1,3 +1,13 @@
+<a name="1.7.0"></a>
+## 1.7.0 (2019-05-14)
+
+
+#### Features
+
+*   rename role ([53d2eaf4](https://github.com/weareinteractive/ansible-apache2/commit/53d2eaf401a37929468293869ba276ac297508d4))
+
+
+
 <a name="1.6.0"></a>
 ## 1.6.0 (2019-05-14)
 
