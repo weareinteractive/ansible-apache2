@@ -1,11 +1,11 @@
-# Ansible franklinkim.apache2 role
+# Ansible weareinteractive.apache2 role
 
 [![Build Status](https://img.shields.io/travis/weareinteractive/ansible-apache2.svg)](https://travis-ci.org/weareinteractive/ansible-apache2)
-[![Galaxy](http://img.shields.io/badge/galaxy-franklinkim.apache2-blue.svg)](https://galaxy.ansible.com/list#/roles/1364)
+[![Galaxy](https://img.shields.io/badge/galaxy-weareinteractive.apache2-blue.svg)](https://galaxy.ansible.com/weareinteractive/apache2)
 [![GitHub Tags](https://img.shields.io/github/tag/weareinteractive/ansible-apache2.svg)](https://github.com/weareinteractive/ansible-apache2)
 [![GitHub Stars](https://img.shields.io/github/stars/weareinteractive/ansible-apache2.svg)](https://github.com/weareinteractive/ansible-apache2)
 
-> `franklinkim.apache2` is an [Ansible](http://www.ansible.com) role which:
+> `weareinteractive.apache2` is an [Ansible](http://www.ansible.com) role which:
 >
 > * installs apache2
 > * configures apache2
@@ -17,24 +17,28 @@
 > * adds rules
 > * configures service
 
+**Note:**
+
+> Since Ansible Galaxy supports [organization](https://www.ansible.com/blog/ansible-galaxy-2-release) now, this role has moved from `franklinkim.apache2` to `weareinteractive.apache2`!
+
 ## Installation
 
 Using `ansible-galaxy`:
 
 ```shell
-$ ansible-galaxy install franklinkim.apache2
+$ ansible-galaxy install weareinteractive.apache2
 ```
 
 Using `requirements.yml`:
 
 ```yaml
-- src: franklinkim.apache2
+- src: weareinteractive.apache2
 ```
 
 Using `git`:
 
 ```shell
-$ git clone https://github.com/weareinteractive/ansible-apache2.git franklinkim.apache2
+$ git clone https://github.com/weareinteractive/ansible-apache2.git weareinteractive.apache2
 ```
 
 ## Dependencies
@@ -173,7 +177,7 @@ This is an example playbook:
     - weareinteractive.apt
     - weareinteractive.openssl
     - weareinteractive.htpasswd
-    - franklinkim.apache2
+    - weareinteractive.apache2
   vars:
     htpasswd:
       - name: foobar

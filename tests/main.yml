@@ -11,7 +11,7 @@
     - weareinteractive.apt
     - weareinteractive.openssl
     - weareinteractive.htpasswd
-    - franklinkim.apache2
+    - weareinteractive.apache2
   vars:
     htpasswd:
       - name: foobar

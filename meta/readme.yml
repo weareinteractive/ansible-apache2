@@ -1,11 +1,11 @@
 ---
 
-galaxy_name: franklinkim.apache2
+galaxy_name: weareinteractive.apache2
 github_user: weareinteractive
 github_name: ansible-apache2
 badges: |
   [![Build Status](https://img.shields.io/travis/weareinteractive/ansible-apache2.svg)](https://travis-ci.org/weareinteractive/ansible-apache2)
-  [![Galaxy](http://img.shields.io/badge/galaxy-franklinkim.apache2-blue.svg)](https://galaxy.ansible.com/list#/roles/1364)
+  [![Galaxy](https://img.shields.io/badge/galaxy-weareinteractive.apache2-blue.svg)](https://galaxy.ansible.com/weareinteractive/apache2)
   [![GitHub Tags](https://img.shields.io/github/tag/weareinteractive/ansible-apache2.svg)](https://github.com/weareinteractive/ansible-apache2)
   [![GitHub Stars](https://img.shields.io/github/stars/weareinteractive/ansible-apache2.svg)](https://github.com/weareinteractive/ansible-apache2)
 description: |
@@ -18,6 +18,10 @@ description: |
   > * optionally removes default host
   > * adds rules
   > * configures service
+
+  **Note:**
+
+  > Since Ansible Galaxy supports [organization](https://www.ansible.com/blog/ansible-galaxy-2-release) now, this role has moved from `franklinkim.apache2` to `weareinteractive.apache2`!
 after_handlers: |
   ## Rules
 

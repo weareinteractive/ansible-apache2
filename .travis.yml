@@ -5,7 +5,7 @@ services:
   - docker
 env:
   global:
-    - role: franklinkim.apache2
+    - role: weareinteractive.apache2
   matrix:
     - distribution: Ubuntu
       distribution_version: "18.04"

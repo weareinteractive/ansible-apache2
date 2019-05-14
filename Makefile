@@ -1,5 +1,5 @@
 PWD=$(shell pwd)
-ROLE_NAME=franklinkim.apache2
+ROLE_NAME=weareinteractive.apache2
 ROLE_PATH=/etc/ansible/roles/$(ROLE_NAME)
 TEST_VERSION=ansible --version
 TEST_DEPS=ansible-galaxy install -c weareinteractive.apt weareinteractive.openssl weareinteractive.htpasswd
