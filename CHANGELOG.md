@@ -1,3 +1,13 @@
+<a name="1.6.0"></a>
+## 1.6.0 (2019-05-14)
+
+
+#### Features
+
+*   reload on site template change ([b85d6f2c](https://github.com/weareinteractive/ansible-apache2/commit/b85d6f2cde8408b8c1e05f3a4883b21c6013929b))
+
+
+
 <a name="1.5.2"></a>
 ### 1.5.2 (2019-05-14)
 
