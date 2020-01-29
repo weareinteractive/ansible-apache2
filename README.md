@@ -115,7 +115,7 @@ apache2_certs_path: /etc/ssl/certs
 apache2_keys_path: /etc/ssl/private
 
 # template to render sites from if no template is configured in apache2_sites...template
-default_site_template: etc/apache2/sites-available/site.j2
+apache2_common_site_template: etc/apache2/sites-available/site.j2
 
 ```
 
