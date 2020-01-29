@@ -9,7 +9,7 @@
 
 - name: Creating sites
   template:
-    src: "{{ item.template|default('etc/apache2/sites-available/site.j2') }}"
+    src: "{{ item.template|default(default_site_template) }}"
     dest: "/etc/apache2/sites-available/{{ item.id }}.conf"
     owner: root
     group: root
