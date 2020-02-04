@@ -1,3 +1,13 @@
+<a name="1.8.0"></a>
+## 1.8.0 (2020-02-04)
+
+
+#### Features
+
+*   add `apache2_sites_template` option
+
+
+
 <a name="1.7.0"></a>
 ## 1.7.0 (2019-05-14)
 
