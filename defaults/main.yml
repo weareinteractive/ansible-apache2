@@ -45,6 +45,8 @@ apache2_modules: []
 apache2_confs: []
 # enabled/disabled sites
 apache2_sites: []
+# default site template file
+apache2_sites_template: etc/apache2/sites-available/site.j2
 # remove the default host
 apache2_remove_default: no
 # start on boot
