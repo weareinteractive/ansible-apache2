@@ -2,7 +2,7 @@
 
 - name: Creating webroots
   file:
-    dest: "/var/www/{{ item.id }}/htdocs"
+    dest: "{{ apache2_docroot_basedir }}/{{ item.id }}/htdocs"
     state: directory
   when: item.add_webroot is defined and item.add_webroot
   with_items: "{{ apache2_sites }}"
