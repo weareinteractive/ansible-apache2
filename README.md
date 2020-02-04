@@ -97,6 +97,8 @@ apache2_modules: []
 apache2_confs: []
 # enabled/disabled sites
 apache2_sites: []
+# default site template file
+apache2_sites_template: etc/apache2/sites-available/site.j2
 # remove the default host
 apache2_remove_default: no
 # start on boot
@@ -113,9 +115,6 @@ apache2_trace_enable: 'Off'
 apache2_certs_path: /etc/ssl/certs
 # path to keys
 apache2_keys_path: /etc/ssl/private
-
-# template to render sites from if no template is configured in apache2_sites...template
-apache2_common_site_template: etc/apache2/sites-available/site.j2
 
 ```
 
