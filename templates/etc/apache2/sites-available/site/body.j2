@@ -1,5 +1,5 @@
   ServerName {{ item.name }}
-  DocumentRoot /var/www/{{ item.id }}/htdocs
+  DocumentRoot {{ apache2_sites_basedir }}/{{ item.id }}/htdocs
   {% for value in item.aliases|default([]) %}
   ServerAlias {{ value }}
   {% endfor %}
@@ -12,7 +12,7 @@
 
   # --- directories -----------------------------------------------------------
 
-  <Directory /var/www/{{ item.id }}/htdocs>
+  <Directory {{ apache2_sites_basedir }}/{{ item.id }}/htdocs>
     AllowOverride All
     Options FollowSymLinks
     Require all granted
