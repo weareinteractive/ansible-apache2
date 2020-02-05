@@ -1,3 +1,13 @@
+<a name="1.9.0"></a>
+## 1.9.0 (2020-02-05)
+
+
+#### Features
+
+*   make site's basedir configurable ([8b4a8e02](https://github.com/weareinteractive/ansible-apache2/commit/8b4a8e0224f3794e09a0acc8ddecc99508f73c09))
+
+
+
 <a name="1.8.0"></a>
 ## 1.8.0 (2020-02-04)
 
