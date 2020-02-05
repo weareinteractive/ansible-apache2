@@ -85,8 +85,6 @@ Here is a list of all the default variables for this role, which are also availa
 # packages (versions)
 apache2_packages:
   - apache2
-# where do we have our document roots (Default /var/www means /var/www/<SiteId>/htdocs)
-apache2_docroot_basedir: /var/www
 # ports to listen to
 apache2_ports: [80]
 # ssl ports to listen to
@@ -99,6 +97,8 @@ apache2_modules: []
 apache2_confs: []
 # enabled/disabled sites
 apache2_sites: []
+# where do we have our document roots (default /var/www means /var/www/<SiteId>/htdocs)
+apache2_sites_basedir: /var/www
 # default site template file
 apache2_sites_template: etc/apache2/sites-available/site.j2
 # remove the default host
