@@ -1,6 +1,11 @@
 ---
 
-- name: restart apache2
+- name: check apache2 config before restart
+  listen: restart apache2
+  command: /usr/sbin/apache2ctl configtest
+
+- name: do restart apache2
+  listen: restart apache2
   service: name=apache2 state=restarted
   when: apache2_service_state != 'stopped'
 
