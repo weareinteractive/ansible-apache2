@@ -127,6 +127,14 @@ These are the handlers that are defined in `handlers/main.yml`.
 ```yaml
 ---
 
+- name: test and restart apache2
+  command: apache2ctl configtest
+  notify: restart apache2
+
+- name: test and reload apache2
+  command: apache2ctl configtest
+  notify: reload apache2
+
 - name: restart apache2
   service: name=apache2 state=restarted
   when: apache2_service_state != 'stopped'
