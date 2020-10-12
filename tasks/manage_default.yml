@@ -4,7 +4,7 @@
   file:
     dest: /etc/apache2/sites-enabled/000-default.conf
     state: absent
-  notify: reload apache2
+  notify: test and reload apache2
   when: apache2_remove_default
 
 - name: Removing default host
