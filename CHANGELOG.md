@@ -1,3 +1,13 @@
+<a name="1.9.2"></a>
+### 1.9.2 (2020-10-12)
+
+
+#### Features
+
+*   check apache config before restart ([3f08a58b](https://github.com/weareinteractive/ansible-apache2/commit/3f08a58b6d33d2e36e45d0f7913ae6c150d13e2f))
+
+
+
 <a name="1.9.1"></a>
 ### 1.9.1 (2020-10-12)
 
