@@ -7,7 +7,7 @@
     owner: root
     group: root
     mode: "0644"
-  notify: reload apache2
+  notify: test and reload apache2
   with_items:
     - etc/apache2/apache2.conf
     - etc/apache2/ports.conf
