@@ -1,3 +1,13 @@
+<a name="1.10.0"></a>
+## 1.10.0 (2020-11-06)
+
+
+#### Features
+
+*   allow custom confs ([34bb6b15](https://github.com/weareinteractive/ansible-apache2/commit/34bb6b150fc5fefdba0cdacdd05260424f8f00f2))
+
+
+
 <a name="1.9.2"></a>
 ### 1.9.2 (2020-10-12)
 
