@@ -60,6 +60,9 @@ Here is a list of all the default variables for this role, which are also availa
 # apache2_confs:
 #   - { id: security, state: absent }
 #   - { name: mime, state: present }
+#   - id: my_config
+#     state: present
+#     template: path/to/template.j2
 # apache2_sites:
 #   - id: mysite (required)
 #     name: mysite.local (required)

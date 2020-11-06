@@ -1,5 +1,16 @@
 ---
 
+- name: Creating confs
+  template:
+    src: "{{ item.template }}"
+    dest: "/etc/apache2/conf-available/{{ item.id }}.conf"
+    owner: root
+    group: root
+    mode: "0644"
+  when: item.template is defined
+  with_items: "{{ apache2_confs }}"
+  notify: test and reload apache2
+
 - name: Enabling conf
   command: >
     a2enconf {{ item.id }}
