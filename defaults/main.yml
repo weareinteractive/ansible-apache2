@@ -14,6 +14,7 @@
 # apache2_sites:
 #   - id: mysite (required)
 #     name: mysite.local (required)
+#     document_root: ""
 #     ip: '*'
 #     port: 80
 #     state: present
