@@ -1,5 +1,9 @@
   ServerName {{ item.name }}
+  {% if item.document_root is defined %}
+  DocumentRoot {{ item.document_root }}
+  {% else %}
   DocumentRoot {{ apache2_sites_basedir }}/{{ item.id }}/htdocs
+  {% endif %}
   {% for value in item.aliases|default([]) %}
   ServerAlias {{ value }}
   {% endfor %}
@@ -12,7 +16,11 @@
 
   # --- directories -----------------------------------------------------------
 
+  {% if item.document_root is defined %}
+  <Directory {{ item.document_root }}>
+  {% else %}
   <Directory {{ apache2_sites_basedir }}/{{ item.id }}/htdocs>
+  {% endif %}
     AllowOverride All
     Options FollowSymLinks
     Require all granted
